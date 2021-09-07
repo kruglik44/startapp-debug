@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>Подать объявление</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click) = "close()">Закрыть</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+      <ion-row>
+          <ion-col size-md="10" offset-md="1">
+              <form #authForm = "ngForm" (ngSubmit) = "onSubmit(authForm)">
+                <ion-item>
+                  <ion-label position="floating">Груз</ion-label>
+                  <ion-input 
+                    id="cargo"
+                    name="cargo"
+                    required
+                    ngModel>
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Кузов</ion-label>
+                  <ion-select id="type"
+                              name="type"
+                              required
+                              ngModel
+                              interface="action-sheet">
+                    <ion-select-option value="Рефрижератор">Рефрижератор</ion-select-option>
+                    <ion-select-option value="Тент">Тент</ion-select-option>
+                    <ion-select-option value="Изотермич. кузов">Изотермич. кузов</ion-select-option>
+                    <ion-select-option value="Шаланда">Шаланда</ion-select-option>
+                    <ion-select-option value="Самосвал">Самосвал</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Объём, м3</ion-label>
+                  <ion-input 
+                    id="volume"
+                    name="volume"
+                    required
+                    ngModel>
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Грузоподъёность, тонн</ion-label>
+                  <ion-input 
+                    id="capasity"
+                    name="capasity"
+                    required
+                    ngModel>
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Откуда</ion-label>
+                  <ion-input 
+                    id="from"
+                    name="from"
+                    required
+                    ngModel>
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Куда</ion-label>
+                  <ion-input 
+                    id="to"
+                    name="to"
+                    required
+                    ngModel>
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Дата погрузки</ion-label>
+                  <ion-datetime id='date' name = "date" required ngModel  displayFormat="DD/MM/YYYY"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Ставка</ion-label>
+                  <ion-input 
+                    id="bet"
+                    name="bet"
+                    required
+                    ngModel>
+                  </ion-input>
+                </ion-item>
+                <ion-button [disabled] = "!authForm.valid" type = "submit">Разместить</ion-button>
+              </form>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>

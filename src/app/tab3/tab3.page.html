@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>
+      Найти перевозчика
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf = "orderList">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-card *ngFor="let order of orderList" (click) = "selectTruckNote(order)">
+          <ion-item>
+            <ion-icon color='success' slot="start" name="cash-outline"></ion-icon>
+            <ion-label>{{order.date | date : 'dd/M/yyyy'}}</ion-label>
+            <ion-button fill="outline" slot="end">Связаться</ion-button>
+          </ion-item>
+          <ion-card-header>
+            <ion-card-subtitle style="font-size: 20px; color: blue;">{{order.from}} - {{order.to}}</ion-card-subtitle>
+            <ion-card-title>{{order.bet}} руб/км</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style="color: black;">
+            Автомобиль: {{order.carModel}}
+            <br>
+            Кузов: {{order.body}}
+            <br>
+            Тоннаж: {{order.capasity}} т.
+            <br>
+            Объём: {{order.volume}} м3
+            <br>
+            ID заказа: {{order.id}}
+            <br>
+            Исполнитель: {{order.executor}} 
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

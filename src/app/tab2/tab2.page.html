@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>
+      Найти груз
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let cargo of cargoList">
+          <ion-item>
+            <ion-icon color='success' slot="start" name="cash-outline"></ion-icon>
+            <ion-label>{{cargo.date | date : 'dd/M/yyyy'}}</ion-label>
+            <ion-button fill="outline" slot="end">Связаться</ion-button>
+          </ion-item>
+          <ion-card-header>
+            <ion-card-subtitle style="font-size: 20px; color: blue;">{{cargo.from}} - {{cargo.to}}</ion-card-subtitle>
+            <ion-card-title>{{cargo.bet}} руб</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content style="color: black;">
+            Груз: {{cargo.cargo}}
+            <br>
+            Кузов: {{cargo.body}}
+            <br>
+            Тоннаж: {{cargo.capasity}} т.
+            <br>
+            Объём: {{cargo.volume}} м3
+            <br>
+            ID заказа: {{cargo.id}}
+            <br>
+            Грузоотправитель: {{cargo.sender}} 
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

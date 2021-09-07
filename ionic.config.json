@@ -1,0 +1,8 @@
+{
+  "name": "startapp-debug",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

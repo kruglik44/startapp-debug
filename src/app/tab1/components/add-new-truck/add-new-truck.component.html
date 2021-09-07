@@ -1,0 +1,92 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>Добавить автомобиль</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click) = "close()">Закрыть</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg = "8" offset-lg = "2">
+        <form #carForm = "ngForm" (ngSubmit) = "onSubmit(carForm)">
+          <ion-item>
+            <ion-label position="floating">Марка и модель ТС</ion-label>
+            <ion-input 
+              id="name"
+              name="name"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Фотография (url)</ion-label>
+            <ion-input 
+              id="url"
+              name="url"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Тип кузова</ion-label>
+            <ion-input 
+              id="type"
+              name="type"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Грузоподъёмность</ion-label>
+            <ion-input 
+              id="lifting"
+              name="lifting"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Объём кузова</ion-label>
+            <ion-input 
+              id="size"
+              name="size"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Количество</ion-label>
+            <ion-input 
+              id="amount"
+              name="amount"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Краткое описание</ion-label>
+            <ion-input 
+              id="description"
+              name="description"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Характеристики</ion-label>
+            <ion-input 
+              id="specifications"
+              name="specifications"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-button [disabled] = "!carForm.valid" type = "submit">Разместить</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

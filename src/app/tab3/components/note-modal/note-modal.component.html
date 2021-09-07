@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "primary">
+    <ion-title>Заявка</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click) = "close()">Закрыть</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs = "12">
+        <ion-list>
+          <ion-list-header>
+            <h4><b>Информация о рейсе</b></h4>
+          </ion-list-header>
+          <ion-item>
+            <ion-label class="ion-text-wrap" style="font-size: 20px;">{{note.from}}</ion-label>
+            <ion-icon color = "primary" name="arrow-forward-outline"></ion-icon>
+            <ion-label style="text-align: right; font-size: 20px;">{{note.to}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon color="primary" style="margin-right: 16px;" name="analytics-outline"></ion-icon>
+            <ion-label>Расстояние</ion-label>
+            <ion-label>{{distance}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon color="primary" style="margin-right: 16px;" name="barbell-outline"></ion-icon>
+            <ion-label>Тоннаж</ion-label>
+            <ion-label>{{note.capasity}} т</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon color="primary" style="margin-right: 16px;" name="cube-outline"></ion-icon>
+            <ion-label>Объём</ion-label>
+            <ion-label>{{note.volume}} м3</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-img  style="width: 24px; height: 24px; margin-right: 16px;" src="../assets/images/truck_logo.png"></ion-img>
+            <ion-label>Тип кузова</ion-label>
+            <ion-label>{{note.body}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon color="success" style="margin-right: 16px;" name="cash-outline"></ion-icon>
+            <ion-label>Стоимость рейса</ion-label>
+            <ion-label>{{price}} рублей</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon color="primary" style="margin-right: 16px;" name="person-outline"></ion-icon>
+            <ion-label>Грузоперевозчик</ion-label>
+            <ion-label>{{note.executor}}</ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-button *ngIf = "profileType == 'Грузоотправитель'" style="margin-bottom: 10px;" color = "primary" expand = "block">Выбрать рейс</ion-button>
+        <div class="container">
+          <ya-map [center]="[55.751952, 37.600739]" [state]="{ controls: [] }">
+            <ya-control type="RoutePanel"  [parameters]="routePanelParameters" (ready)="onRoutePanelReady($event)">
+            </ya-control>
+            <ya-control type="ZoomControl" [parameters]="zoomControlParameters"></ya-control>
+          </ya-map>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

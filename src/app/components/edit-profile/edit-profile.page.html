@@ -1,0 +1,254 @@
+<ion-header>
+  <ion-toolbar color = "primary">
+    <ion-title>Настройка профиля</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid *ngIf = "!profileType">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Выберите тип профиля</ion-label>
+          <ion-select [(ngModel)] = "profileType" required>
+            <ion-select-option value="Перевозчик">Перевозчик</ion-select-option>
+            <ion-select-option value="Грузоотправитель">Грузоотправитель</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+
+  <ion-grid *ngIf = "profileType == 'Грузоотправитель'">
+    <ion-row>
+      <ion-col>
+        <form #authCargoForm = "ngForm" (ngSubmit) = "onSubmitCargo(authCargoForm)">
+          <ion-item>
+            <ion-label position="floating">Название организации</ion-label>
+            <ion-input
+              id="name"
+              name = "name"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Аватар (url)</ion-label>
+            <ion-input 
+              id="avatar"
+              name="avatar"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Страна</ion-label>
+            <ion-input 
+              id="country"
+              name="country"
+              required
+              ngModel>
+            </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Город</ion-label>
+          <ion-input 
+            id="city"
+            name="city"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Краткое описание</ion-label>
+          <ion-input 
+            id="description"
+            name="description"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Тип профиля</ion-label>
+          <ion-select ngModel id = "profile" name = "profile" required>
+            <ion-select-option value="Перевозчик">Перевозчик</ion-select-option>
+            <ion-select-option value="Грузоотправитель">Грузоотправитель</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Лет в работе</ion-label>
+          <ion-input 
+            id="years"
+            name="years"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Сайт</ion-label>
+          <ion-input 
+            id="web_site"
+            name="web_site"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Налогооблажение</ion-label>
+          <ion-input 
+            id="tax_type"
+            name="tax_type"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">ИНН</ion-label>
+          <ion-input 
+            id="inn"
+            name="inn"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">ОГРНИП</ion-label>
+          <ion-input 
+            id="ogrnip"
+            name="ogrnip"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Код ATI</ion-label>
+          <ion-input 
+            id="ati_code"
+            name="ati_code"
+            required
+            ngModel>
+          </ion-input>
+        </ion-item>
+        <ion-button [disabled] = "!authCargoForm.valid" type = "submit">Завершить</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf = "profileType == 'Перевозчик'">
+    <ion-row>
+      <ion-col size-xs='12' size-lg='8' offset-md = '2'>
+        <form #authForm = "ngForm" (ngSubmit) = "onSubmit(authForm)">
+          <ion-item>
+            <ion-label position="floating">Название организации</ion-label>
+            <ion-input
+              id="name"
+              name = "name"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Аватар (url)</ion-label>
+            <ion-input 
+              id="avatar"
+              name="avatar"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Страна</ion-label>
+              <ion-input 
+                id="country"
+                name="country"
+                required
+                ngModel>
+              </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Город</ion-label>
+            <ion-input 
+              id="city"
+              name="city"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Краткое описание</ion-label>
+            <ion-input 
+              id="description"
+              name="description"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Тип профиля</ion-label>
+            <ion-select ngModel id = "profile" name = "profile" required>
+              <ion-select-option value="Перевозчик">Перевозчик</ion-select-option>
+              <ion-select-option value="Грузоотправитель">Грузоотправитель</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Лет в работе</ion-label>
+            <ion-input 
+              id="years"
+              name="years"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Перевозок выполнено</ion-label>
+            <ion-input 
+              id="cargo_amount"
+              name="cargo_amount"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Количество трансопрта</ion-label>
+            <ion-input 
+              id="trucks_amount"
+              name="trucks_amount"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">ИНН</ion-label>
+            <ion-input 
+              id="inn"
+              name="inn"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">ОГРНИП</ion-label>
+            <ion-input 
+              id="ogrnip"
+              name="ogrnip"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Код ATI</ion-label>
+            <ion-input 
+              id="ati_code"
+              name="ati_code"
+              required
+              ngModel>
+            </ion-input>
+          </ion-item>
+          <ion-button [disabled] = "!authForm.valid" type = "submit">Завершить</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
